@@ -330,15 +330,22 @@ p {
 }
 
 .about-img-placeholder {
-    width: 350px;
-    height: 350px;
-    background: linear-gradient(135deg, #8B4513, #D2B48C);
-    border-radius: 20px;
+    width: 600px;
+    height: 600px;
+    background: none; /* Hapus background gradient */
+    border-radius: 50%; /* Biar placeholder-nya juga bulat */
+    overflow: hidden; /* Supaya gambar gak keluar dari lingkaran */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 4rem;
+    padding: 0;
+}
+
+.about-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Isi penuh lingkaran */
+    border-radius: 50%; /* Biar tetap bulat */
 }
 
 /* Featured Products */
@@ -394,6 +401,12 @@ p {
     font-size: 3rem;
     color: white;
     transition: transform 0.3s ease;
+}
+
+.product-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image scales properly */
 }
 
 .product-card:hover .product-img-placeholder {
@@ -668,13 +681,14 @@ p {
 .quick-view-content {
     background: white;
     border-radius: 20px;
-    max-width: 800px;
+    max-width: 700px; /* Reduced max-width to prevent overflow */
     width: 90%;
-    padding: 2rem;
+    padding: 1.5rem;
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    display: flex; /* Changed to flex for better control */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 1rem;
+    align-items: flex-start; /* Align items at the top */
 }
 
 .close-modal {
@@ -692,18 +706,46 @@ p {
     color: #8B4513;
 }
 
+.quick-view-image {
+    flex: 1;
+    min-width: 200px; /* Ensure image doesn't shrink too much */
+    max-width: 300px; /* Constrain image width to prevent overflow */
+    margin: 0 auto; /* Center image on smaller screens */
+}
+
 .quick-view-image .product-img-placeholder {
-    height: 300px;
+    width: 100%;
+    height: 200px; /* Reduced height to prevent overlap */
     background: linear-gradient(135deg, #D2B48C, #FFD700);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+.quick-view-image .product-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image scales properly */
+    border-radius: 15px;
 }
 
 .quick-view-info {
-    padding: 1rem;
+    flex: 1;
+    min-width: 200px; /* Ensure info section doesn't shrink too much */
+    padding: 0.5rem 0;
+}
+
+.quick-view-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .quick-view-description {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     color: #6B4E31;
+    font-size: 0.95rem;
 }
 
 /* Footer */
@@ -965,3 +1007,33 @@ p {
 
 .hidden { display: none; }
 .visible { display: block; }
+
+/*Beli produk*/
+
+        .product-info {
+            text-align: center; /* Memusatkan semua konten di dalam product-info */
+        }
+
+        .product-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px; /* Jarak antar elemen di dalam product-rating */
+            margin-bottom: 10px;
+        }
+
+        .btn-buy-now {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #25D366; /* Warna hijau WhatsApp */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-buy-now:hover {
+            background-color: #128C7E; /* Warna hijau lebih gelap saat hover */
+        }
